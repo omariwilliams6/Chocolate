@@ -1,0 +1,302 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Maison Rizzati — Luxury chocolate design system.
+ * Italian luxury · artisanal craftsmanship · subtle Lufthansa accent.
+ * All colors in oklch. Tokens drive every component.
+ */
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-cream: var(--cream);
+  --color-bone: var(--bone);
+  --color-espresso: var(--espresso);
+  --color-cocoa: var(--cocoa);
+  --color-noir: var(--noir);
+  --color-gold: var(--gold);
+  --color-lufthansa: var(--lufthansa);
+  --color-lufthansa-soft: var(--lufthansa-soft);
+}
+
+:root {
+  /* Luxury palette */
+  --bone: oklch(0.97 0.008 80);
+  --cream: oklch(0.945 0.018 75);
+  --warm-white: oklch(0.985 0.005 80);
+  --espresso: oklch(0.28 0.035 45);
+  --cocoa: oklch(0.22 0.03 40);
+  --noir: oklch(0.13 0.012 40);
+  --gold: oklch(0.74 0.115 75);
+  --lufthansa: oklch(0.32 0.085 252);
+  --lufthansa-soft: oklch(0.62 0.075 250);
+
+  --background: var(--cream);
+  --foreground: var(--noir);
+  --card: var(--bone);
+  --card-foreground: var(--noir);
+  --popover: var(--bone);
+  --popover-foreground: var(--noir);
+  --primary: var(--noir);
+  --primary-foreground: var(--cream);
+  --secondary: oklch(0.9 0.015 75);
+  --secondary-foreground: var(--noir);
+  --muted: oklch(0.92 0.012 75);
+  --muted-foreground: oklch(0.45 0.02 50);
+  --accent: var(--gold);
+  --accent-foreground: var(--noir);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.86 0.015 70);
+  --input: oklch(0.86 0.015 70);
+  --ring: var(--espresso);
+  --radius: 4px;
+}
+
+.dark {
+  --background: var(--noir);
+  --foreground: var(--cream);
+  --card: var(--cocoa);
+  --card-foreground: var(--cream);
+  --popover: var(--cocoa);
+  --popover-foreground: var(--cream);
+  --primary: var(--cream);
+  --primary-foreground: var(--noir);
+  --secondary: oklch(0.2 0.02 40);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.2 0.02 40);
+  --muted-foreground: oklch(0.7 0.02 60);
+  --accent: var(--gold);
+  --accent-foreground: var(--noir);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    letter-spacing: 0.005em;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+
+  ::selection {
+    background-color: var(--gold);
+    color: var(--noir);
+  }
+}
+
+@layer components {
+  .container-luxury {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 1440px;
+  }
+  @media (min-width: 768px) {
+    .container-luxury { padding-left: 3rem; padding-right: 3rem; }
+  }
+  @media (min-width: 1280px) {
+    .container-luxury { padding-left: 5rem; padding-right: 5rem; }
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .display-xl {
+    font-family: var(--font-serif);
+    font-size: clamp(2.75rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .display-lg {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.04;
+    letter-spacing: -0.018em;
+  }
+
+  .display-md {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+    font-weight: 300;
+    line-height: 1.15;
+  }
+
+  .subtitle-en {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: oklch(from var(--foreground) l c h / 0.55);
+    font-style: normal;
+  }
+
+  .btn-luxury {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    background-color: var(--noir);
+    color: var(--cream);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid var(--noir);
+  }
+  .btn-luxury:hover {
+    background-color: transparent;
+    color: var(--noir);
+  }
+
+  .btn-ghost-luxury {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border: 1px solid oklch(1 0 0 / 0.4);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-ghost-luxury:hover {
+    background-color: var(--cream);
+    color: var(--noir);
+    border-color: var(--cream);
+  }
+
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .gold-rule {
+    height: 1px;
+    width: 60px;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  .hairline {
+    height: 1px;
+    background: var(--border);
+  }
+
+  .img-frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--cocoa);
+  }
+  .img-frame img {
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .img-frame:hover img {
+    transform: scale(1.04);
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
