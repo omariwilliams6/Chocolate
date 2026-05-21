@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as MenuRouteImport } from './routes/menu'
-import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CollectionRouteImport } from './routes/collection'
 import { Route as AboutRouteImport } from './routes/about'
@@ -25,11 +24,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExperienceRoute = ExperienceRouteImport.update({
-  id: '/experience',
-  path: '/experience',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -58,7 +52,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
-  '/experience': typeof ExperienceRoute
   '/menu': typeof MenuRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -67,7 +60,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
-  '/experience': typeof ExperienceRoute
   '/menu': typeof MenuRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -77,7 +69,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
-  '/experience': typeof ExperienceRoute
   '/menu': typeof MenuRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -88,25 +79,16 @@ export interface FileRouteTypes {
     | '/about'
     | '/collection'
     | '/contact'
-    | '/experience'
     | '/menu'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/collection'
-    | '/contact'
-    | '/experience'
-    | '/menu'
-    | '/sitemap.xml'
+  to: '/' | '/about' | '/collection' | '/contact' | '/menu' | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/collection'
     | '/contact'
-    | '/experience'
     | '/menu'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
@@ -116,7 +98,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CollectionRoute: typeof CollectionRoute
   ContactRoute: typeof ContactRoute
-  ExperienceRoute: typeof ExperienceRoute
   MenuRoute: typeof MenuRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -135,13 +116,6 @@ declare module '@tanstack/react-router' {
       path: '/menu'
       fullPath: '/menu'
       preLoaderRoute: typeof MenuRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/experience': {
-      id: '/experience'
-      path: '/experience'
-      fullPath: '/experience'
-      preLoaderRoute: typeof ExperienceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -180,7 +154,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CollectionRoute: CollectionRoute,
   ContactRoute: ContactRoute,
-  ExperienceRoute: ExperienceRoute,
   MenuRoute: MenuRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

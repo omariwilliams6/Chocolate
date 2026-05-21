@@ -6,7 +6,6 @@ const NAV = [
   { to: "/", it: "Home", en: "Home" },
   { to: "/about", it: "Maison", en: "About" },
   { to: "/collection", it: "Collezione", en: "Collection" },
-  { to: "/experience", it: "Esperienza", en: "Experience" },
   { to: "/menu", it: "Menu", en: "Menu" },
   { to: "/contact", it: "Contatti", en: "Contact" },
 ] as const;
@@ -35,8 +34,8 @@ export function SiteHeader() {
         scrolled
           ? "bg-background/85 backdrop-blur-xl border-b border-border"
           : onDark
-          ? "bg-transparent"
-          : "bg-background/70 backdrop-blur-md"
+            ? "bg-transparent"
+            : "bg-background/70 backdrop-blur-md"
       }`}
     >
       <div className="container-luxury flex items-center justify-between h-20">
@@ -63,7 +62,9 @@ export function SiteHeader() {
               key={item.to}
               to={item.to}
               className={`link-underline text-[11px] tracking-[0.22em] uppercase font-medium transition-colors ${
-                onDark ? "text-cream/85 hover:text-cream" : "text-foreground/80 hover:text-foreground"
+                onDark
+                  ? "text-cream/85 hover:text-cream"
+                  : "text-foreground/80 hover:text-foreground"
               }`}
               activeProps={{ className: "!text-accent" }}
               activeOptions={{ exact: item.to === "/" }}
@@ -99,9 +100,15 @@ export function SiteHeader() {
             className={`lg:hidden flex flex-col gap-1.5 ${onDark ? "text-cream" : "text-foreground"}`}
             onClick={() => setOpen((o) => !o)}
           >
-            <span className={`block h-px w-6 bg-current transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`block h-px w-6 bg-current transition-opacity ${open ? "opacity-0" : ""}`} />
-            <span className={`block h-px w-6 bg-current transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+            <span
+              className={`block h-px w-6 bg-current transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`block h-px w-6 bg-current transition-opacity ${open ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`block h-px w-6 bg-current transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`}
+            />
           </button>
         </div>
       </div>
@@ -120,13 +127,25 @@ export function SiteHeader() {
               className="display-md text-foreground"
             >
               {lang === "it" ? item.it : item.en}
-              <span className="block subtitle-en mt-1">{lang === "it" ? item.en : item.it}</span>
+              <span className="block subtitle-en mt-1">
+                {lang === "it" ? item.en : item.it}
+              </span>
             </Link>
           ))}
           <div className="flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase pt-4 border-t border-border">
-            <button onClick={() => setLang("it")} className={lang === "it" ? "text-accent" : "opacity-60"}>Italiano</button>
+            <button
+              onClick={() => setLang("it")}
+              className={lang === "it" ? "text-accent" : "opacity-60"}
+            >
+              Italiano
+            </button>
             <span className="opacity-40">·</span>
-            <button onClick={() => setLang("en")} className={lang === "en" ? "text-accent" : "opacity-60"}>English</button>
+            <button
+              onClick={() => setLang("en")}
+              className={lang === "en" ? "text-accent" : "opacity-60"}
+            >
+              English
+            </button>
           </div>
         </nav>
       </div>
